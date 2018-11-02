@@ -13,21 +13,21 @@ export class PostsService {
   constructor(private http: Http) { }
 
   getPosts() {
-    this.http.get(this.url);
+    return this.http.get(this.url);
   }
 
   createPost(input: HTMLInputElement) {
     let post = { title: input.value }
     input.value = '';
-    this.http.post(this.url, post);
+    return this.http.post(this.url, post);
   }
 
   updatePost(post) {
-    this.http.patch(this.url + '/' + post.id , JSON.stringify({title: 'TITLE WAS UPDATED'}));
+    return this.http.patch(this.url + '/' + post.id , JSON.stringify({title: 'TITLE WAS UPDATED'}));
   }
 
   deletePost(post) {
-    this.http.delete(this.url + '/' + post.id);
+    return this.http.delete(this.url + '/' + post.id);
   }
 
 }
