@@ -1,3 +1,3 @@
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let post of posts"> {{ post }} <button class="btn btn-danger btn-sm">remove</button></li>
+  <li class="list-group-item" *ngFor="let post of posts"> {{ post }} <button class="btn btn-danger btn-sm" (click)="removePost(post)">remove</button></li>
 </ul>
