@@ -16,18 +16,16 @@ export class PostsService {
     return this.http.get(this.url);
   }
 
-  createPost(input: HTMLInputElement) {
-    let post = { title: input.value }
-    input.value = '';
-    return this.http.post(this.url, post);
+  createPost(post) {
+    return this.http.post(this.url, JSON.stringify(post));
   }
 
   updatePost(post) {
     return this.http.patch(this.url + '/' + post.id , JSON.stringify({title: 'TITLE WAS UPDATED'}));
   }
 
-  deletePost(post) {
-    return this.http.delete(this.url + '/' + post.id);
+  deletePost(id) {
+    return this.http.delete(this.url + '/' + id);
   }
 
 }

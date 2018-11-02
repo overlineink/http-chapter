@@ -1,3 +1,4 @@
+<input type="text" class="form-control" (keyup.enter)="addPost(input)" #input>
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let post of posts"> {{ post.title }} <button class="btn btn-danger btn-sm" (click)="removePost(post)">remove</button></li>
 </ul>
