@@ -9,13 +9,9 @@ import { BadInput } from 'src/app/common/bad.input';
 @Injectable({
   providedIn: 'root'
 })
-export class PostsService {
+export class DataService {
   
-  // private API url
-  private url;
-  posts;
-
-  constructor(private http: Http) { }
+  constructor(private url : string, private http : Http) { }
 
   getAll() {
     return this.http.get(this.url)
