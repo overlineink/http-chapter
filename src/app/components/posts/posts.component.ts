@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from 'src/app/services/posts/posts.service';
+import { AppError } from 'src/app/common/app.error';
+import { NotFoundError } from 'src/app/common/not-found.error';
+import { BadInput } from 'src/app/common/bad.input';
 
 @Component({
   selector: 'app-posts',
@@ -22,9 +25,17 @@ export class PostsComponent implements OnInit {
       .subscribe(res => {
         post['id'] = res.json().id;
         this.posts.splice(0, 0, post);
-      }, err => {
-        alert('Unexpected error occurerd.');
-        console.log(err);
+      }, (err : AppError) => {
+        if(err instanceof BadInput)
+          alert('');
+        else throw err;
+      });
+  }
+
+  updatePost(post) {
+    this.service.updatePost(post)
+      .subscribe(res => {
+        console.log(res.json());
       });
   }
 
@@ -33,9 +44,10 @@ export class PostsComponent implements OnInit {
       .subscribe(res => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
-      }, err => {
-        alert('Unexpected error occurerd.');
-        console.log(err);
+      }, (err : AppError) => {
+        if(err instanceof NotFoundError)
+          alert('This post has already been deleted.');
+        else throw err;
       });
   }
 
@@ -43,9 +55,6 @@ export class PostsComponent implements OnInit {
     this.service.getPosts()
     .subscribe(resolve => {
       this.posts = resolve.json();
-    }, err => {
-      alert('Unexpected error occurerd.');
-      console.log(err);
     });
   }
 
