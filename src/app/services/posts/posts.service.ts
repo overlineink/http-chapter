@@ -18,33 +18,42 @@ export class PostsService {
   constructor(private http: Http) { }
 
   getPosts() {
-    return this.http.get(this.url);
+    return this.http.get(this.url)
+      .pipe(
+        catchError(this.errorHandler)
+      );
   }
 
   createPost(post) {
     return this.http.post(this.url, JSON.stringify(post))
       .pipe(
-        catchError((err : Response) => {
-          if(err.status === 400)
-            return throwError(new BadInput(err.json()));
-          return throwError(new AppError(err.json()));
-        })
+        catchError(this.errorHandler)
       )
   }
 
   updatePost(post) {
-    return this.http.patch(this.url + '/' + post.id , JSON.stringify({title: 'TITLE WAS UPDATED'}));
+    return this.http.patch(this.url + '/' + post.id , JSON.stringify({title: 'TITLE WAS UPDATED'}))
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
   deletePost(id) {
     return this.http.delete(this.url + '/' + id)
       .pipe(
-        catchError((err: Response) => {
-          if(err.status === 404)
-            return throwError(new NotFoundError(err));
-          return throwError(new AppError(err));
-        })
-      )
+        catchError(this.errorHandler)
+      );
+  }
+
+  private errorHandler(err : Response) {
+    
+    if(err.status === 400)
+      return throwError(new BadInput(err.json()));
+    
+      if(err.status === 404)
+      return throwError(new NotFoundError(err));
+
+    return throwError(new AppError(err));
   }
 
 }
