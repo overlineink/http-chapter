@@ -15,30 +15,34 @@ export class DataService {
 
   getAll() {
     return this.http.get(this.url)
-      .pipe(
-        catchError(this.errorHandler)
-      );
+        .pipe(
+            map(response => response.json()),
+            catchError(this.errorHandler)
+        );
   }
 
   create(resourse) {
     return this.http.post(this.url, JSON.stringify(resourse))
-      .pipe(
-        catchError(this.errorHandler)
-      )
+        .pipe(
+            map(response => response.json()),
+            catchError(this.errorHandler)
+        );
   }
 
   update(resourse) {
-    return this.http.patch(this.url + '/' + resourse.id , JSON.stringify({title: 'TITLE WAS UPDATED'}))
-    .pipe(
-      catchError(this.errorHandler)
-    );
+    return this.http.patch(this.url + '/' + resourse.id , JSON.stringify(resourse))
+        .pipe(
+            map(response => response.json()),
+            catchError(this.errorHandler)
+        );
   }
 
   delete(id) {
     return this.http.delete(this.url + '/' + id)
-      .pipe(
-        catchError(this.errorHandler)
-      );
+        .pipe(
+            map(response => response.json()),
+            catchError(this.errorHandler)
+        );
   }
 
   private errorHandler(err : Response) {
