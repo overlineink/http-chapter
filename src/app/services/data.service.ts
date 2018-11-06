@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { throwError, Observable } from 'rxjs'
-import { catchError } from 'rxjs/operators'
+import { throwError } from 'rxjs'
+import { catchError, map } from 'rxjs/operators'
 
 import { AppError } from 'src/app/common/app.error';
 import { NotFoundError } from 'src/app/common/not-found.error';
