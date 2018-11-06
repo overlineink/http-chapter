@@ -18,14 +18,16 @@ export class PostsComponent implements OnInit {
 
   addPost(input : HTMLInputElement) {
     let post = { email: 'me@example.com', body: input.value };
+    this.posts.splice(0, 0, post);
     
     input.value = '';
     
     this.service.create(post)
       .subscribe(post => {
         post['id'] = post.id;
-        this.posts.splice(0, 0, post);
       }, (err : AppError) => {
+        this.posts.splice(0, 1);
+        
         if(err instanceof BadInput)
           alert('');
         else throw err;
