@@ -1,4 +1,33 @@
-<input type="text" class="form-control" (keyup.enter)="addPost(input)" #input>
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let post of posts"> {{ post.title }} <button class="btn btn-danger btn-sm" (click)="removePost(post)">remove</button></li>
-</ul>
+<main role="main" class="container">
+
+  <div class="d-flex align-items-center p-3 my-3 rounded shadow-sm">
+    <img class="mr-3" src="../../../favicon.ico" alt="" width="48" height="48">
+    <div class="lh-100">
+      <h6 class="mb-0 lh-100">Bootstrap</h6>
+      <small>Since 2011</small>
+    </div>
+  </div>
+
+  <div class="my-3 p-3 bg-white rounded bg-orange shadow-sm">
+
+    <div class="input-group">
+      <input type="text" class="form-control" #input>
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-primary" (click)="addPost(input)">Add</button>
+      </div>
+    </div>
+
+    <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+
+    <div class="media text-muted pt-3" *ngFor="let post of posts">
+      <img alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="../../../favicon.ico"
+        data-holder-rendered="true">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">@{{ post.email }}</strong>
+        {{ post.body }} <button class="btn btn-danger btn-sm" (click)="removePost(post)">remove</button>
+      </p>
+    </div>
+  
+  </div>
+
+</main>

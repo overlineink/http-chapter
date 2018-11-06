@@ -12,7 +12,7 @@ import { BadInput } from 'src/app/common/bad.input';
 export class PostsService {
   
   // private API url
-  private url = 'https://jsonplaceholder.typicode.com/posts';
+  private url = 'https://jsonplaceholder.typicode.com/comments';
   posts;
 
   constructor(private http: Http) { }

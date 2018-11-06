@@ -17,7 +17,7 @@ export class PostsComponent implements OnInit {
   constructor(private service: PostsService) { }
 
   addPost(input : HTMLInputElement) {
-    let post = { title: input.value };
+    let post = { email: 'me@example.com', body: input.value };
     
     input.value = '';
     
