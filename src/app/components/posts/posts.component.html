@@ -23,7 +23,7 @@
       <img alt="32x32" class="mr-2 rounded" style="width: 32px; height: 32px;" src="../../../favicon.ico"
         data-holder-rendered="true">
       <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">@{{ post.email }}</strong>
+        <strong class="d-block text-gray-dark">{{ post.email }}</strong>
         {{ post.body }} <button class="btn btn-danger btn-sm" (click)="removePost(post)">remove</button>
       </p>
     </div>
