@@ -15,10 +15,18 @@ export class DataService {
 
   getAll() {
     return this.http.get(this.url)
-        .pipe(
-            map(response => response.json()),
-            catchError(this.errorHandler)
-        );
+      .pipe(
+          map(response => response.json()),
+          catchError(this.errorHandler)
+      );
+  }
+
+  getById(id) {
+    return this.http.get(this.url + '/' + id)
+      .pipe(
+        map(response => response.json()),
+        catchError(this.errorHandler)
+      );
   }
 
   create(resourse) {
@@ -31,10 +39,10 @@ export class DataService {
 
   update(resourse) {
     return this.http.patch(this.url + '/' + resourse.id , JSON.stringify(resourse))
-        .pipe(
-            map(response => response.json()),
-            catchError(this.errorHandler)
-        );
+      .pipe(
+          map(response => response.json()),
+          catchError(this.errorHandler)
+      );
   }
 
   delete(id) {
