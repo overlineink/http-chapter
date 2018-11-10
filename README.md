@@ -77,11 +77,11 @@ We also present good practices when consuming HTTP services, we also had a brief
 * Add config to your template
 In this example I use Bootstrap css classes to make our app friendly.
 
-<pre>
+```
     <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
         <strong class="d-block text-gray-dark">
             {{ post.email }}
         </strong>
         {{ post.body }}
     </p>
-</pre>
+```
