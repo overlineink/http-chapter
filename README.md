@@ -1,14 +1,12 @@
 # 📖 Chapter 9 - Consuming HTTP Services
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.3.
-
 This project is part of the Angular Series Program, in this episode we present the readjustments of [Angular](https://angular.io) version 7.0.3.
 
 We also present good practices when consuming HTTP services, we also had a brief consideration of the handling of errors for HTTP services (unexpected errors, global errors and specific errors) and to create a reusable service following the Clean Code Guides * Separation of concepts.
 
 # Quick Start 🚀
 
-#### Example: Posts Service
+#### Example: Posts Page
 
 * Clone this repo
 <pre>git clone https://github.com/overlineink/http-chapter.git</pre>
@@ -20,13 +18,12 @@ Install dependencies
 <pre> npm install </pre>
 
 ⚠ Note: Open your command line inside the folder of your project before installing the dependencies
+⚠ Advice: Generate your own services and use 'em with DataService class.
 
-* Generate your own services and use 'em with DataService class.
-
-* Generating service
+Generating `Posts` Service
 <pre>ng generate service services/post</pre> or use that for short  <pre>ng g s services/post</pre>
 
-* Extends DataService class and provide necessary params. 
+* Extends `DataService` class and passing expected params. 
 
 <pre lang=typescript>
     import { Injectable } from '@angular/core';
@@ -46,11 +43,11 @@ Install dependencies
     }
 </pre>
 
-* Generate your component and consume your service
+* Generate `Posts` component
 
 <pre>ng g c components/post</pre>
 
-* Adding service to our component
+* Consuming our `Posts` service
 
 <pre lang=typescript>
     import { Component, OnInit } from '@angular/core';
@@ -79,7 +76,7 @@ Install dependencies
 
 </pre>
 
-* Add config to your template
+* Adding posts to our `Posts` template
 In this example I use Bootstrap css classes to make our app friendly.
 
 ```
@@ -91,6 +88,6 @@ In this example I use Bootstrap css classes to make our app friendly.
     </p>
 ```
 
-* Serve your project 🐱‍👓
+* Serve your project and enjoy 🐱‍👓
 
-<pre> ng serve --open </pre> 
+<pre> ng serve --open </pre>
