@@ -6,7 +6,9 @@ This project is part of the Angular Series Program, in this episode we present t
 
 We also present good practices when consuming HTTP services, we also had a brief consideration of the handling of errors for HTTP services (unexpected errors, global errors and specific errors) and to create a reusable service following the Clean Code Guides * Separation of concepts.
 
-# Quick Start
+# Quick Start 🚀
+
+#### Example: Posts Service
 
 * Clone this repo
 <pre>git clone https://github.com/overlineink/http-chapter.git</pre>
@@ -14,16 +16,19 @@ We also present good practices when consuming HTTP services, we also had a brief
 * Open this project on your favorite editor or IDE. For this example I was using [vscode](https://code.visualstudio.com/) a powerfull editor.
 <pre>code . </pre>
 
+Install dependencies
+<pre> npm install </pre>
+
+⚠ Note: Open your command line inside the folder of your project before installing the dependencies
+
 * Generate your own services and use 'em with DataService class.
 
-#### Example: Posts Service
-
 * Generating service
-<pre>ng generate service services/post</pre> or use that for short <pre>ng g s services/post</pre>
+<pre>ng generate service services/post</pre> or use that for short  <pre>ng g s services/post</pre>
 
 * Extends DataService class and provide necessary params. 
 
-<pre>
+<pre lang=typescript>
     import { Injectable } from '@angular/core';
     import { Http } from '@angular/http';
     import { DataService } from '../data.service';
@@ -47,7 +52,7 @@ We also present good practices when consuming HTTP services, we also had a brief
 
 * Adding service to our component
 
-<pre>
+<pre lang=typescript>
     import { Component, OnInit } from '@angular/core';
     import { PostsService } from 'src/app/services/posts/posts.service';
 
