@@ -90,3 +90,7 @@ In this example I use Bootstrap css classes to make our app friendly.
         {{ post.body }}
     </p>
 ```
+
+* Serve your project 🐱‍👓
+
+<pre> ng serve --open </pre> 
